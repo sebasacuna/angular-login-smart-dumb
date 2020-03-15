@@ -1,0 +1,50 @@
+<div
+  class="container-login"
+  fxLayout="row"
+  fxLayoutAlign="center center">
+  <div fxFlex.lt-xl="30"
+       ngStyle.lt-xl="margin-top:-100px"
+       fxFlex.lt-lg="30"
+       fxFlex.lt-md="60"
+       fxFlex.lt-sm="100"
+       ngStyle.lt-sm="height:100vh"
+       fxLayout="column"
+       fxLayout.xs="column stretch">
+    <mat-card  ngStyle.lt-sm="height:100vh"
+               fxLayout="column"
+               fxLayoutAlign.xs="center strech">
+      <mat-card-header
+        fxLayoutAlign="center"
+        style="margin-top: 20px">
+        <mat-card-title>{{titlecard}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content
+        style="margin-bottom:20px;padding-left: 20px;padding-right: 20px;">
+
+        <app-signin *ngIf="login" (sigupAction)="showSignUp($event)"></app-signin>
+        <app-signup *ngIf="!login" (siginAction)="showSign($event)"></app-signup>
+
+
+      </mat-card-content>
+    </mat-card>
+    <div
+      *ngIf="login"
+      fxHide.xs="login"
+      class="login-footer"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      style="margin-top: 30px">
+      <p>Need account? please click below</p>
+      <a (click)="showSignUp($event)">Sign Up</a>
+    </div>
+    <div
+      *ngIf="!login"
+      fxHide.xs="!login"
+      class="login-footer"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      style="margin-top: 30px">
+      <p>Do you wanna Sign In? please click below</p>
+      <a (click)="showSign($event)">Sign In</a>
+    </div>
+  </div>
